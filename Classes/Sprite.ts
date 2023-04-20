@@ -10,7 +10,7 @@ export default class Sprite {
     position: IPosition;
     image: HTMLImageElement;
     loaded: boolean = false;
-    width: number = 0
+    width: number = 10
     height: number = 0
     constructor({position, imageSrc}: ISpriteProps) {
         this.position = position;
@@ -25,6 +25,6 @@ export default class Sprite {
     
     public draw() {
         if(!this.loaded) return;
-        ctx!.drawImage(this.image, this.position.x, this.position.y)
+        ctx!.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
     }
 }

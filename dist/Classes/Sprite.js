@@ -2,7 +2,7 @@ import { ctx } from "./Canvas.js";
 export default class Sprite {
     constructor({ position, imageSrc }) {
         this.loaded = false;
-        this.width = 0;
+        this.width = 10;
         this.height = 0;
         this.position = position;
         this.image = new Image();
@@ -16,6 +16,6 @@ export default class Sprite {
     draw() {
         if (!this.loaded)
             return;
-        ctx.drawImage(this.image, this.position.x, this.position.y);
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
     }
 }
