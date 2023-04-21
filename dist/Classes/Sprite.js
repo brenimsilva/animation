@@ -40,19 +40,19 @@ export default class Sprite {
     setAnimationSprite(animationType) {
         switch (animationType) {
             case "ATTACK":
-                this.image.src = "../assets/Vampire_Girl/Attack_1.png";
+                this.image.src = "./assets/Vampire_Girl/Attack_1.png";
                 this.maxFrames = 4;
                 break;
             case "IDLE":
-                this.image.src = "../assets/Vampire_Girl/Idle.png";
+                this.image.src = "./assets/Vampire_Girl/Idle.png";
                 this.maxFrames = 4;
                 break;
             case "JUMP":
-                this.image.src = "../assets/Vampire_Girl/Jump.png";
+                this.image.src = "./assets/Vampire_Girl/Jump.png";
                 this.maxFrames = 5;
                 break;
             case "DEAD":
-                this.image.src = "../assets/Vampire_Girl/Dead.png";
+                this.image.src = "./assets/Vampire_Girl/Dead.png";
                 this.maxFrames = 9;
                 break;
         }
