@@ -27,9 +27,23 @@ export default class Sprite {
         ctx.drawImage(this.image, this.msw * this.sprite_width, this.msh * this.sprite_height, this.sprite_width, this.sprite_height, this.position.x, this.position.y, this.width * this.scale, this.height * this.scale);
     }
     update() {
-        if (this.msw < 4)
+        if (this.msw < 4) {
             this.msw++;
-        else
+            this.draw();
+        }
+        else {
             this.msw = 0;
+            this.draw();
+        }
+    }
+    setAnimationSprite(animationType) {
+        switch (animationType) {
+            case "ATTACK":
+                this.image.src = "../assets/Vampire_Girl/Attack_1.png";
+                break;
+            case "IDLE":
+                this.image.src = "../assets/Vampire_Girl/Idle.png";
+                break;
+        }
     }
 }

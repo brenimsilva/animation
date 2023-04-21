@@ -1,4 +1,5 @@
 import IPosition from "../Interfaces/IPosition.js";
+import { AnimationEnum } from "./AnimationEnum.js";
 import { ctx } from "./Canvas.js";
 
 export interface ISpriteProps {
@@ -49,7 +50,24 @@ export default class Sprite {
     }
 
     update() {
-        if (this.msw < 4) this.msw++
-        else this.msw = 0;
+        if (this.msw < 4) {
+            this.msw++
+            this.draw();
+        } 
+        else {
+            this.msw = 0;
+            this.draw();
+        } 
+    }
+    setAnimationSprite(animationType: AnimationEnum) {
+
+        switch(animationType) {
+            case "ATTACK":
+                this.image.src = "../assets/Vampire_Girl/Attack_1.png"
+                break;
+            case "IDLE":
+                this.image.src = "../assets/Vampire_Girl/Idle.png"
+                break;
+        }
     }
 }
