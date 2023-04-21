@@ -1,5 +1,6 @@
 export enum AnimationEnum {
     ATTACK = "ATTACK",
     IDLE = "IDLE",
-    DEAD = "DEAD"
+    DEAD = "DEAD",
+    JUMP = "JUMP"
 }

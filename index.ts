@@ -18,6 +18,13 @@ const keys = {
     a: {
         pressed: false
     },
+    d: {
+        pressed: false
+    },
+    spacebar: {
+        pressed: false
+    }
+
 }
 
 function animate() {
@@ -29,6 +36,12 @@ function animate() {
     player.setAnimationSprite(AnimationEnum.IDLE)
     if(keys.a.pressed) {
         player.setAnimationSprite(AnimationEnum.ATTACK);
+    }
+    if(keys.d.pressed) {
+        player.setAnimationSprite(AnimationEnum.DEAD);
+    }
+    if(keys.spacebar.pressed) {
+        player.setAnimationSprite(AnimationEnum.JUMP);
     }
         setTimeout(() => {
             requestAnimationFrame(animate);
@@ -44,6 +57,12 @@ window.addEventListener('keydown', (e) => {
         case "a":
             keys.a.pressed = true;
             break;
+        case " ":
+            keys.spacebar.pressed = true;
+            break;
+        case "d":
+            keys.d.pressed = true;
+            break;
     }
 })
 
@@ -51,6 +70,12 @@ window.addEventListener("keyup", (e) => {
     switch(e.key) {
         case "a":
             keys.a.pressed = false;
+            break;
+        case " ":
+            keys.spacebar.pressed = false;
+            break;
+        case "d":
+            keys.d.pressed = false;
             break;
     }
 })

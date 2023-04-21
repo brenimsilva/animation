@@ -9,6 +9,7 @@ export default class Sprite {
         this.msw = 1;
         this.msh = 0;
         this.scale = 2;
+        this.maxFrames = 0;
         this.image = new Image();
         this.position = position;
         this.image.onload = () => {
@@ -27,7 +28,7 @@ export default class Sprite {
         ctx.drawImage(this.image, this.msw * this.sprite_width, this.msh * this.sprite_height, this.sprite_width, this.sprite_height, this.position.x, this.position.y, this.width * this.scale, this.height * this.scale);
     }
     update() {
-        if (this.msw < 4) {
+        if (this.msw < this.maxFrames) {
             this.msw++;
             this.draw();
         }
@@ -40,9 +41,19 @@ export default class Sprite {
         switch (animationType) {
             case "ATTACK":
                 this.image.src = "../assets/Vampire_Girl/Attack_1.png";
+                this.maxFrames = 4;
                 break;
             case "IDLE":
                 this.image.src = "../assets/Vampire_Girl/Idle.png";
+                this.maxFrames = 4;
+                break;
+            case "JUMP":
+                this.image.src = "../assets/Vampire_Girl/Jump.png";
+                this.maxFrames = 5;
+                break;
+            case "DEAD":
+                this.image.src = "../assets/Vampire_Girl/Dead.png";
+                this.maxFrames = 9;
                 break;
         }
     }

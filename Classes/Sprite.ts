@@ -18,6 +18,7 @@ export default class Sprite {
     msw: number = 1;
     msh: number = 0;
     scale: number = 2;
+    maxFrames: number = 0;
 
     constructor({position, imageSrc}: ISpriteProps) {
         this.image = new Image();
@@ -50,7 +51,7 @@ export default class Sprite {
     }
 
     update() {
-        if (this.msw < 4) {
+        if (this.msw < this.maxFrames) {
             this.msw++
             this.draw();
         } 
@@ -64,9 +65,19 @@ export default class Sprite {
         switch(animationType) {
             case "ATTACK":
                 this.image.src = "../assets/Vampire_Girl/Attack_1.png"
+                this.maxFrames = 4
                 break;
             case "IDLE":
                 this.image.src = "../assets/Vampire_Girl/Idle.png"
+                this.maxFrames = 4
+                break;
+            case "JUMP":
+                this.image.src = "../assets/Vampire_Girl/Jump.png"
+                this.maxFrames = 5
+                break;
+            case "DEAD":
+                this.image.src = "../assets/Vampire_Girl/Dead.png"
+                this.maxFrames = 9
                 break;
         }
     }
