@@ -2,20 +2,34 @@ import { ctx } from "./Canvas.js";
 export default class Sprite {
     constructor({ position, imageSrc }) {
         this.loaded = false;
-        this.width = 10;
+        this.sprite_width = 128;
+        this.sprite_height = 200;
         this.height = 0;
-        this.position = position;
+        this.width = 0;
+        this.msw = 1;
+        this.msh = 0;
+        this.scale = 2;
         this.image = new Image();
+        this.position = position;
         this.image.onload = () => {
             this.loaded = true;
-            this.width = this.image.width;
-            this.height = this.image.height;
+            this.width = this.sprite_width;
+            this.height = this.sprite_height;
+            this.position = { x: position.x - this.width * this.scale / 2, y: position.y - this.height * this.scale / 2 };
         };
         this.image.src = imageSrc;
     }
     draw() {
         if (!this.loaded)
             return;
-        ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        //  ctx!.fillStyle = "blue";
+        //  ctx!.fillRect(this.position.x, this.position.y, this.sprite_width, this.sprite_height)
+        ctx.drawImage(this.image, this.msw * this.sprite_width, this.msh * this.sprite_height, this.sprite_width, this.sprite_height, this.position.x, this.position.y, this.width * this.scale, this.height * this.scale);
+    }
+    update() {
+        if (this.msw < 4)
+            this.msw++;
+        else
+            this.msw = 0;
     }
 }
