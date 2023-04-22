@@ -1,6 +1,7 @@
 import { AnimationEnum } from "./Classes/AnimationEnum.js";
 import { canvas, ctx } from "./Classes/Canvas.js";
 import Player from "./Classes/Player.js";
+import SpriteLoader from "./Classes/SpritesLoader.js";
 const CANVAS_WIDTH = canvas.width = 600;
 const CANVAS_HEIGHT = canvas.height = 600;
 const mobImage = new Image();
@@ -21,6 +22,7 @@ const keys = {
         pressed: false
     }
 };
+new SpriteLoader();
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     // ctx!.fillRect(50,50,100,100);
